@@ -37,11 +37,11 @@ public class AdminPanelMenuTest {
         //go over list menu
         for (int i = 0; i < driver.findElements(By.id("app-")).size(); i++) {
             driver.findElements(By.id("app-")).get(i).click();
-            //validate if title (h1) exists
-            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.tagName("h1"))));
             //go over each child element of left menu
             for (int j = 0; j < driver.findElements(By.id("app-")).get(i).findElements(By.tagName("li")).size(); j++) {
                 driver.findElements(By.id("app-")).get(i).findElements(By.tagName("li")).get(j).click();
+                //validate if title (h1) exists
+                wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.tagName("h1"))));
             }
         }
     }
