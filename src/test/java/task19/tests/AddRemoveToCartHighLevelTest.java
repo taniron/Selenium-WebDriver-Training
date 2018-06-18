@@ -1,5 +1,6 @@
 package task19.tests;
 
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +8,6 @@ import task19.pages.AddProductToCartPage;
 import task19.pages.AllProductsPage;
 import task19.pages.Page;
 import task19.pages.RemoveProductFromCart;
-
 
 public class AddRemoveToCartHighLevelTest {
 
@@ -43,11 +43,11 @@ public class AddRemoveToCartHighLevelTest {
         allProductsPage.goToCheckoutPage();
 
         for (int i = 3; i > 0; i--) {
-            //removeProductPage.removeProductFromCart(i);
+            removeProductPage.removeProductFromCart(i);
         }
     }
 
-    // @After
+    @After
     public void stop() {
         quit();
         driver = null;
