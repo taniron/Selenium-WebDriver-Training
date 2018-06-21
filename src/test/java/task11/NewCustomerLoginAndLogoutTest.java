@@ -33,24 +33,33 @@ public class NewCustomerLoginAndLogoutTest {
         driver.findElement(By.cssSelector("div.content table td a")).click();
         wait.until(ExpectedConditions.titleIs("Create Account | My Store"));
 
-        driver.findElement(By.name("firstname")).sendKeys("Peter", Keys.TAB, "Smith", Keys.TAB, "5th Avenu",
-                Keys.TAB, Keys.TAB, "12345", Keys.TAB, "Boston", Keys.TAB);
+        driver.findElement(By.name("firstname")).sendKeys("Peter");
+        driver.findElement(By.name("lastname")).sendKeys("Smith");
+        driver.findElement(By.name("address1")).sendKeys("5th Avenu");
+        driver.findElement(By.name("postcode")).sendKeys("12345");
+        driver.findElement(By.name("city")).sendKeys("Boston");
+
         final WebElement countrySelectWebElement = driver.findElement(By.name("country_code"));
         Select dropdown = new Select(countrySelectWebElement);
         dropdown.selectByVisibleText("United States");
 
         final String userEmail = System.currentTimeMillis() + "@gmail.com";
         final String userPassword = "a12345";
-        driver.findElement(By.name("email")).sendKeys(userEmail, Keys.TAB, "45896325",
-                Keys.TAB, Keys.TAB, userPassword, Keys.TAB, userPassword, Keys.TAB, Keys.ENTER);
+        driver.findElement(By.name("email")).sendKeys(userEmail);
+        driver.findElement(By.name("phone")).sendKeys("45896325");
+        driver.findElement(By.name("password")).sendKeys(userPassword);
+        driver.findElement(By.name("confirmed_password")).sendKeys(userPassword);
+        driver.findElement(By.name("create_account")).click();
+
         wait.until(ExpectedConditions.titleIs("Online Store | My Store"));
 
         //logout
         driver.findElement(By.linkText("Logout")).click();
 
         //login
-        driver.findElement(By.name("email")).sendKeys(userEmail, Keys.TAB, userPassword, Keys.TAB, Keys.TAB, Keys.ENTER);
-
+        driver.findElement(By.name("email")).sendKeys(userEmail);
+        driver.findElement(By.name("password")).sendKeys(userPassword);
+        driver.findElement(By.name("login")).click();
         //logout
         driver.findElement(By.linkText("Logout")).click();
     }
